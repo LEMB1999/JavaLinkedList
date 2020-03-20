@@ -12,15 +12,27 @@ package linkedlist;
 public class LinkedList {
  
     public static void main(String[] args) {
+      // prueba de métodos
       ClassLinkedList list= new ClassLinkedList();
-      list.pushBack(1);
-      list.pushBack(2);
+      list.pushFront(2);
+      list.pushFront(1);
       list.pushBack(3);
-      list.pushBack(4);
-      list.pushFront(0);
-      list.MostrarLista();
+      list.pushBackTail(4);
       list.Erase(4);
-      list.MostrarLista();       
+      list.pushBackTail(4);
+      list.MostrarLista();
+      System.out.println(list.countElements());
+      System.out.println(list.find(3));
+      System.out.println(list.isEmpty());
+      list.MostrarLista();
+      System.out.println(list.popBack());
+      list.MostrarLista();
+      list.MostrarLista();
+      System.out.println(list.popFront());
+      list.MostrarLista();
+      System.out.println(list.topBack());
+      System.out.println(list.topBackTail());
+      System.out.println(list.topFront());
     }
     
     

@@ -20,6 +20,7 @@ public class ClassLinkedList {
     public void pushFront(int valor){
         if(head==null){
             head=new Node(valor);
+            tail=head;
         }else{
             Node node= new Node(valor);
             node.setSig(head);
@@ -76,11 +77,12 @@ public class ClassLinkedList {
                 aux=aux.getSig();
             }
             aux.setSig(new Node(valor));
+            tail=aux.getSig();
         }else{
             head=new Node(valor);
+            tail=head;
         }
     }
-    
     public int topBack(){
         int valor=0;
         if(head!=null){
@@ -89,6 +91,25 @@ public class ClassLinkedList {
                 aux=aux.getSig();
             }
          valor=aux.getValor();
+        }else
+            System.out.println("La lisa esta Vacia");
+        return valor;
+    }
+ 
+    //with tail
+    public void pushBackTail(int valor){
+        if(head!=null){
+            tail.setSig(new Node(valor));
+            tail=tail.getSig();
+        }else{
+            head=new Node(valor);
+            tail=head;
+        }
+    }
+    public int topBackTail(){
+        int valor=0;
+        if(head!=null){
+           valor=tail.getValor();
         }else
             System.out.println("La lisa esta Vacia");
         return valor;
@@ -104,6 +125,7 @@ public class ClassLinkedList {
                   aux=aux.getSig();
             }
             valor=aux.getSig().getValor();
+            tail=aux;
             aux.setSig(null);
         }
         return valor;
@@ -125,7 +147,11 @@ public class ClassLinkedList {
                                aux=aux.getSig();
                                if(aux.getValor()==key){
                                   auxAnterior.setSig(aux.getSig());
-                                  }
+                                  //si se elimina el ultimo nodo actualizar el tail
+                                  if(tail.equals(aux)){
+                                      tail=auxAnterior;
+                                    }
+                                }
                         }
             }
      }
@@ -151,12 +177,13 @@ public class ClassLinkedList {
     
     
     
-    public void addBefore(){
+    /*public void addBefore(){
         
     }
     public void addAfter(){
         
     }
+    */
     
     
     public void MostrarLista(){
